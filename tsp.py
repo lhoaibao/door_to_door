@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 import sys
 import time
-from Graph import Graph
+from nearest_neighbor import nearest_neighbor
 
 
 def main():
     if len(sys.argv) == 1 or len(sys.argv) > 3:
         print('wrong command')
         return None
-    graph = Graph()
+    graph = nearest_neighbor()
     load = graph.load_graph(sys.argv[1])
     if not load:
         print('Something wrong with file')
@@ -22,6 +22,7 @@ def main():
     else:
         print('algo is not found')
         return None
+    graph.print_result()
     end = time.time()
     print('time run: ',end-start)
 
