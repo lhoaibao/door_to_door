@@ -7,9 +7,7 @@ class Node:
         - latitude
         - longitude
     """
-    def __init__(self, latitude, longitude):
+    def __init__(self, city_name, latitude, longitude):
+        self.city_name = city_name
         self.latitude = latitude
         self.longitude = longitude
-
-    def distance(self,node):
-        return math.sqrt((self.latitude-node.latitude)**2+(self.longitude-node.longitude)**2)

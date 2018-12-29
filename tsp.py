@@ -38,14 +38,11 @@ def parse_map(cities):
     -   return a Graph object if list of city not None
     -   return None if list of city None
     """
-    dic = {}
+    list_city = []
     if cities:
-        for i in range(1,len(cities)):
-            node = Node(cities[i][1], cities[i][2])
-            dic[name(cities[i][0])] = node
-        first = name(cities[0][0])
-        dic[first] = Node(cities[0][1], cities[0][2])
-        return Graph(dic,first)
+        for i in range(len(cities)):
+            list_city.append(Node(cities[i][0], cities[i][1], cities[i][2]))
+        return Graph(list_city)
     else:
         return None
 
@@ -57,9 +54,9 @@ def main():
     # end = time.time()
     # print('time read and parse map: {}'.format(end-start))
     # start = time.time()
-    result = graph.find_shortest_path()
+    result = graph.nearest_neighbor()
     end = time.time()
-    print(result)
+    graph.print_result();
     print(end-start)
 
 if __name__ == '__main__':
