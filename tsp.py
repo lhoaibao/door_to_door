@@ -4,11 +4,8 @@ import os
 from Node import Node
 from Graph import Graph
 import time
+from two_opt import two_opt
 
-
-class name:
-    def __init__(self, name):
-        self.name = name
 
 def read_file(file_name):
     """
@@ -39,25 +36,35 @@ def parse_map(cities):
     -   return None if list of city None
     """
     list_city = []
-    if cities:
-        for i in range(len(cities)):
-            list_city.append(Node(cities[i][0], cities[i][1], cities[i][2]))
-        return Graph(list_city)
-    else:
-        return None
+    for i in range(len(cities)):
+        list_city.append(Node(cities[i][0], cities[i][1], cities[i][2]))
+    return Graph(list_city)
 
 
 def main():
-    start = time.time()
+    if len(sys.argv)<=1:
+        print('Wrong command')
+        return False
     file_content = read_file(sys.argv[1])
+    if not file_content:
+        print('there are something wrong with input file')
+        return False
     graph = parse_map(file_content)
-    # end = time.time()
-    # print('time read and parse map: {}'.format(end-start))
-    # start = time.time()
-    result = graph.nearest_neighbor()
-    end = time.time()
-    graph.print_result();
-    print(end-start)
+    if len(sys.argv) == 2:
+        start = time.time()
+        result = graph.nearest_neighbor()
+        end = time.time()
+        graph.print_result()
+        print(end-start)
+        return True
+    elif len(sys.argv) == 3:
+        if sys.argv[2]=='two_opt':
+            result = two_opt.solve(graph.list_city)
+            print(result)
+    else:
+        print('Wrong command')
+        return False
+
 
 if __name__ == '__main__':
-    main()
+    process = main()

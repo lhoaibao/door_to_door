@@ -3,7 +3,8 @@ import math
 
 class Node:
     """
-    Node class has 2 attribute:
+    Node class has 3 attribute:
+        - city_name
         - latitude
         - longitude
     """
