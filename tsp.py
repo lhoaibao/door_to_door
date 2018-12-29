@@ -58,9 +58,7 @@ def main():
         print(end-start)
         return True
     elif len(sys.argv) == 3:
-        if sys.argv[2]=='two_opt':
-            result = two_opt.solve(graph.list_city)
-            print(result)
+        pass
     else:
         print('Wrong command')
         return False
