@@ -2,6 +2,9 @@ from Graph import Graph
 
 
 class nearest_neighbor(Graph):
+    def __init__(self):
+        super().__init__()
+        
     def nearest_neighbor(self):
         sum = 0
         result = []
